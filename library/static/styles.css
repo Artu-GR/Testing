@@ -1,0 +1,8 @@
+.book{
+    margin-left:2%;
+    margin-right: 2%;
+}
+ion-content{
+    --padding-start: 4%;
+    --padding-end:4%;
+}
