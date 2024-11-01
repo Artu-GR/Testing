@@ -1,0 +1,17 @@
+<h1>Clientes Registrados</h1>
+<body>
+    <button onclick="window.location.href='{% url 'client' %}'">Agregar Nuevo Clente/Usuario</button>
+    <ul>
+        {% for client in clients %}
+            <li>
+                <strong>Nombre:</strong> {{ client.name }}<br>
+                <strong>Apellido:</strong> {{ client.last_name }}<br>
+                <strong>Correo:</strong> {{ client.email }}
+            </li>
+            <hr>
+        {% empty %}
+            <p>No hay clientes registrados.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
