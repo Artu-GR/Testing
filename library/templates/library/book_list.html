@@ -1,19 +1,15 @@
 <h1>Libros Registrados</h1>
-<body>
-    <button onclick="window.location.href='{% url 'book' %}'">Agregar Nuevo Libro</button>
-    <ul>
-        {% for book in books %}
-            <li>
-                <strong>Título:</strong> {{ book.title }}<br>
-                <strong>Autor:</strong> {{ book.autor }}<br>
-                <strong>Género:</strong> {{ book.genre }}<br>
-                <strong>Descripción:</strong> {{ book.description }}<br>
-                <strong>Total:</strong> {{ book.availability }}
-            </li>
-            <hr>
-        {% empty %}
-            <p>No hay libros registrados.</p>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+<button onclick="window.location.href='{% url 'book' %}'">Agregar Nuevo Libro</button>
+<ul>
+    {% for book in books %}
+        <li>
+            <strong>Título:</strong> {{ book.title }}<br>
+            <strong>Autor:</strong> {{ book.autor }}<br>
+            <strong>Género:</strong> {{ book.genre }}<br>
+            <strong>Descripción:</strong> {{ book.description }}<br>
+            <strong>Total:</strong> {{ book.availability }}<br><br>
+            <button onclick="window.location.href='{% url 'book_edit' book.pk %}'">Editar</button>
+        </li>
+        <hr>
+    {% endfor %}
+</ul>

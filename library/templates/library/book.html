@@ -12,42 +12,40 @@
 </head>
 <body>
 <ion-content>
-    <h1>Registrar Nuevo Libro</h1>
+    <h1>Registrar Libro</h1>
 <form class="book" method="post">
     {% csrf_token %}
         <ion-list>
             <ion-item>
-                <ion-input label="Title"  fill=solid type="text" name="title" id="title"></ion-input>
+                <ion-input label="Title" fill=solid type="text" name="title" id="title" value="{{ book.title }}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <label>Pub-date</label>
-                <ion-datetime display-format="YYYY-MM-DD" name="pub_date" id="pub_date"></ion-datetime>
+                <ion-input label="Date Published" fill=solid type="text" name="pub_date" id="pub_date" placeholder="DD/MM/YYYY" (ionChange)="onDateChange($event)" value="{{ book.pub_date }}"></ion-input>
             </ion-item>
                
             <ion-item>
-                <ion-input label="Autor" fill=solid type="text" name="autor" id="autor"></ion-input>
+                <ion-input label="Autor" fill=solid type="text" name="autor" id="autor" value="{{ book.autor }}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-input label="Genre"  fill=solid type="text" name="genre" id="genre"></ion-input>
+                <ion-input label="Genre"  fill=solid type="text" name="genre" id="genre" value="{{ book.genre }}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-textarea label="Description" fill=solid type="text" name="description" id="description"></ion-textarea>
+                <ion-textarea label="Description" fill=solid type="text" name="description" id="description" value="{{ book.description }}"></ion-textarea>
             </ion-item>
 
             <ion-item>
-                <ion-input label="Availability"  fill=solid type="number" name="availability" id="availability"></ion-input>
-            </ion-item>
-            
-
-            <ion-item>
-                <ion-input label="Editorial"  fill=solid type="text" name="editorial" id="editorial"></ion-input>
+                <ion-input label="Availability"  fill=solid type="number" name="availability" id="availability" value="{{ book.availability }}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-input label="ISBN"  fill=solid type="text" name="isbn" id="isbn"></ion-input>
+                <ion-input label="Editorial"  fill=solid type="text" name="editorial" id="editorial" value="{{ book.editorial }}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input label="ISBN"  fill=solid type="text" name="isbn" id="isbn" value="{{ book.isbn }}"></ion-input>
             </ion-item>
 
             <ion-item>
