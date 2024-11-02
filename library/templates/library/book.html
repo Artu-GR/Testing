@@ -7,53 +7,55 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 </head>
 <body>
 <ion-content>
-    <h1>Registrar Libro</h1>
+
 <form class="book" method="post">
     {% csrf_token %}
-        <ion-list>
-            <ion-item>
-                <ion-input label="Title" fill=solid type="text" name="title" id="title" value="{{ book.title }}"></ion-input>
-            </ion-item>
+        <ion-grid class="forms">
+            <h1>Registrar Libro</h1>
+            <ion-row>
+                <ion-input label="Title" fill="outline" type="text" name="title" id="title" value="{{ book.title }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-input label="Date Published" fill=solid type="text" name="pub_date" id="pub_date" placeholder="DD/MM/YYYY" (ionChange)="onDateChange($event)" value="{{ book.pub_date }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input label="Date Published" fill="outline" type="text" name="pub_date" id="pub_date" placeholder="MM/DD/YYYY" (ionChange)="onDateChange($event)" value="{{ book.pub_date }}"></ion-input>
+            </ion-row>
                
-            <ion-item>
-                <ion-input label="Autor" fill=solid type="text" name="autor" id="autor" value="{{ book.autor }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input label="Autor" fill="outline"  type="text" name="autor" id="autor" value="{{ book.autor }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-input label="Genre"  fill=solid type="text" name="genre" id="genre" value="{{ book.genre }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input label="Genre" fill="outline"  type="text" name="genre" id="genre" value="{{ book.genre }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-textarea label="Description" fill=solid type="text" name="description" id="description" value="{{ book.description }}"></ion-textarea>
-            </ion-item>
+            <ion-row>
+                <ion-textarea label="Description" fill="outline" type="text" name="description" id="description" value="{{ book.description }}"></ion-textarea>
+            </ion-row>
 
-            <ion-item>
-                <ion-input label="Availability"  fill=solid type="number" name="availability" id="availability" value="{{ book.availability }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input label="Availability" fill="outline"  type="number" name="availability" id="availability" value="{{ book.availability }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-input label="Editorial"  fill=solid type="text" name="editorial" id="editorial" value="{{ book.editorial }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input label="Editorial" fill="outline"  type="text" name="editorial" id="editorial" value="{{ book.editorial }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-input label="ISBN"  fill=solid type="text" name="isbn" id="isbn" value="{{ book.isbn }}"></ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-input maxlength="13" label="ISBN" fill="outline" class="uppercase" type="text" name="isbn" id="isbn" value="{{ book.isbn }}"></ion-input>
+            </ion-row>
 
-            <ion-item>
-                <ion-button type="submit" color="primary" fill="solid">Guardar</ion-button>
-            </ion-item>
+            <ion-row>
+                <ion-button  type="submit" color="primary" fill="solid">Guardar</ion-button>
+            </ion-row>
             
     
-        </ion-list>
+        </ion-grid>
             
 
 </form>

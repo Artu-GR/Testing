@@ -35,6 +35,12 @@ def book_edit(request, pk):
         form = BookForm(instance=book)
     return render(request, 'library/book.html', {'form': form, 'book': book})
 
+#elemina un libro
+def book_delete(request,pk):
+    book= get_object_or_404(Book, pk=pk)
+    book.delete()
+    return redirect('book_list')
+
 
 # Agregar un cliente/usuario
 def client(request):
@@ -65,3 +71,8 @@ def client_edit(request, pk):
     else:
         form = ClientForm(instance=client)
     return render(request, 'library/client.html', {'form': form, 'client': client})
+
+def client_delete(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    client.delete()
+    return redirect('client_list')
