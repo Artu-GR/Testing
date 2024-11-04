@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Book, Client
-from .forms import BookForm, ClientForm
+from .forms import BookForm, ClientForm, LendingForm
 
 def index(request):
     return HttpResponse("Welcome")
@@ -76,3 +76,15 @@ def client_delete(request, pk):
     client = get_object_or_404(Client, pk=pk)
     client.delete()
     return redirect('client_list')
+
+#Agregar un prestamo
+
+def lending(request):
+    if request.method == 'POST':
+        form = LendingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lending') #regresa a la pagina princial
+    else:
+        form = LendingForm()
+    return render(request, 'library/lending.html', {'form': form})

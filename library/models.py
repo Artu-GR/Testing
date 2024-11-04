@@ -15,3 +15,12 @@ class Client(models.Model):
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+
+class Lending(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    lending_date = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateTimeField(null=True, blank=True)
+    status = models.CharField(max_length=10, default='out')
+
+    
