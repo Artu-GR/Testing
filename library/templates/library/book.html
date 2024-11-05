@@ -14,7 +14,7 @@
 <body>
 <ion-content>
 
-<form class="book" method="post">
+<form class="book" method="post" enctype="multipart/form-data">
     {% csrf_token %}
         <ion-grid class="forms">
             <h1>Registrar Libro</h1>
@@ -48,6 +48,10 @@
 
             <ion-row>
                 <ion-input maxlength="13" label="ISBN" fill="outline" class="uppercase" type="text" name="isbn" id="isbn" value="{{ book.isbn }}"></ion-input>
+            </ion-row>
+
+            <ion-row>
+                <ion-input type="file" name="image" id=image></ion-input>
             </ion-row>
 
             <ion-row>

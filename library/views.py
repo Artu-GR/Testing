@@ -10,7 +10,7 @@ def index(request):
 # Agregar un libro
 def book(request):
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('book_list') #regresa a la pagina princial
@@ -27,7 +27,7 @@ def book_list(request):
 def book_edit(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
-        form = BookForm(request.POST, instance=book)
+        form = BookForm(request.POST, request.FILES ,instance=book)
         if form.is_valid():
             form.save()
             return redirect('book_list')

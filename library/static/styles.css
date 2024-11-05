@@ -11,6 +11,14 @@
     margin-bottom: 2%;
 
 }
+img{
+    margin-top: 5%;
+    width: 300px;
+    height:400px;
+    margin-left:20%;
+    margin-bottom:4%;
+
+}
 ion-content{
     --padding-start: 4%;
     --padding-end:4%;
@@ -20,10 +28,9 @@ ion-content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 350px;
+    height: 800px;
     border: 2px solid #7ba5f1;
     box-shadow: none;
-   
 }
 .uppercase{
     text-transform: uppercase;

@@ -4,7 +4,7 @@ from .models import Book, Client, Lending
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'pub_date', 'autor', 'genre', 'description','availability', 'editorial','isbn']
+        fields = ['title', 'pub_date', 'autor', 'genre', 'description','availability', 'editorial','isbn','image']
 
 class ClientForm(forms.ModelForm):
     class Meta:

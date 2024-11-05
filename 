@@ -1,0 +1,53 @@
+[33mcommit 336726c332c6c1fc90a7d04537c0da850c049abe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: An-Isa93 <isabel.693@outlook.es>
+Date:   Sun Nov 3 20:15:47 2024 -0600
+
+    Lending model
+
+[33mcommit 1f63a542704b2d20901168d7b9533f435435dcfb[m
+Author: An-Isa93 <isabel.693@outlook.es>
+Date:   Sat Nov 2 15:44:45 2024 -0600
+
+    Option Delete and Styles
+
+[33mcommit 56e4719f90a878e6300acd9fa3d68e373388ece8[m
+Author: RebecaJara <rebeca.jaramilloc@uanl.edu.mx>
+Date:   Fri Nov 1 19:06:29 2024 -0600
+
+    Editar libro/cliente
+
+[33mcommit d7806162b343904d46015ab0f8fdcf478ae4c43c[m
+Author: RebecaJara <rebeca.jaramilloc@uanl.edu.mx>
+Date:   Fri Nov 1 16:34:24 2024 -0600
+
+    Lista de clientes registrados
+
+[33mcommit 2784b9ee60c8a958e7b8f4dcb59adcfecea77bb8[m
+Author: RebecaJara <rebeca.jaramilloc@uanl.edu.mx>
+Date:   Fri Nov 1 16:25:07 2024 -0600
+
+    Lista de libros registrados
+
+[33mcommit f5e021b46e519356d53d1b35b0b34d72ec106564[m
+Author: An-Isa93 <isabel.693@outlook.es>
+Date:   Mon Oct 28 22:39:17 2024 -0600
+
+    styles/book
+
+[33mcommit 880ce4ceaea27fa01302298e575f96aee7e20cce[m
+Author: An-Isa93 <isabel.693@outlook.es>
+Date:   Sun Oct 27 19:53:03 2024 -0600
+
+    Base de datos
+
+[33mcommit fe7176b064a718425a1818a2f8eb7f50444e70cc[m
+Author: RebecaJara <rebeca.jaramilloc@uanl.edu.mx>
+Date:   Sun Oct 27 02:38:57 2024 -0600
+
+    Vista de libros y clientes
+
+[33mcommit d95547c7d09e1d2c886fa1ac79e243637e831c37[m
+Author: An-Isa93 <isabel.693@outlook.es>
+Date:   Sat Oct 26 15:51:12 2024 -0600
+
+    Model Book

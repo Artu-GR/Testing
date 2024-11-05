@@ -10,6 +10,7 @@ class Book(models.Model):
     availability = models.PositiveIntegerField(default=0)
     editorial = models.CharField(max_length=150)
     isbn = models.CharField(max_length=13, unique=True)
+    image = models.ImageField(upload_to="books",null=True)
 
 class Client(models.Model):
     name = models.CharField(max_length=50)

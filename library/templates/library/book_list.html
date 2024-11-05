@@ -24,10 +24,15 @@
             {% for book in books %}
             <ion-col size="6" class="col">
                 <ion-card class="book-card">
-                    <ion-card-header>
-                    <ion-card-title><strong>{{ book.title }}</strong><br></ion-card-title>
-                    </ion-card-header>
                     <ion-card-content>
+                    <ion-card-title><strong>{{ book.title }}</strong><br></ion-card-title>
+                    <ion-row>
+                    {% if book.image %}
+                    <img src="{{book.image.url}}">
+                    {% endif %}
+                    </ion-row>
+                
+                   
                         <strong>Autor:</strong> {{ book.autor }}<br>
                         <strong>Género:</strong> {{ book.genre }}<br>
                         <strong>Descripción:</strong> {{ book.description }}<br>
