@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Book, Client
+from .models import Book, Client, Lending
 from .forms import BookForm, ClientForm, LendingForm
+from django.contrib import messages
 
 def index(request):
     return HttpResponse("Welcome")
@@ -13,7 +14,10 @@ def book(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, "Libro agregado correctamente.")
             return redirect('book_list') #regresa a la pagina princial
+        else:
+            messages.error(request, "Error al agregar el libro. Verifica los campos.")
     else:
         form = BookForm()
     return render(request, 'library/book.html', {'form': form})
@@ -31,11 +35,13 @@ def book_edit(request, pk):
         if form.is_valid():
             form.save()
             return redirect('book_list')
+        else:
+            messages.error(request, "Error al agregar el libro. Verifica los campos.")
     else:
         form = BookForm(instance=book)
     return render(request, 'library/book.html', {'form': form, 'book': book})
 
-#elemina un libro
+#elimina un libro
 def book_delete(request,pk):
     book= get_object_or_404(Book, pk=pk)
     book.delete()
@@ -48,7 +54,10 @@ def client(request):
         form = ClientForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Cliente agregado correctamente.")
             return redirect('client_list') #regresa a la pagina princial
+        else:
+            messages.error(request, "Error al agregar el cliente. Verifica los campos.")
     else:
         form = ClientForm()
     return render(request, 'library/client.html', {'form': form})
@@ -67,7 +76,8 @@ def client_edit(request, pk):
             form.save()
             return redirect('client_list')
         else:
-            print(form.errors)
+            messages.error(request, "Error al agregar el cliente. Verifica los campos.")
+            
     else:
         form = ClientForm(instance=client)
     return render(request, 'library/client.html', {'form': form, 'client': client})
@@ -78,13 +88,44 @@ def client_delete(request, pk):
     return redirect('client_list')
 
 #Agregar un prestamo
-
 def lending(request):
+    books = Book.objects.all()
+    clients = Client.objects.all()
+    print("Clientes:", clients)
     if request.method == 'POST':
         form = LendingForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lending') #regresa a la pagina princial
+            messages.success(request, "Préstamo agregado correctamente.")
+            return redirect('lending_list') #regresa a la pagina princial
+        else:
+            messages.error(request, "Error al agregar el préstamo. Verifica los campos.")
     else:
         form = LendingForm()
-    return render(request, 'library/lending.html', {'form': form})
+    return render(request, 'library/lending.html', {'form': form,'books':books, 'clients':clients})
+
+def lending_list(request):
+    lendings = Lending.objects.all()
+    return render(request,'library/lending_list.html',{'lendings':lendings})
+
+def lending_edit(request, pk):
+    books = Book.objects.all()
+    clients = Client.objects.all()
+    lending = get_object_or_404(Lending, pk=pk)
+    if request.method == 'POST':
+        form = LendingForm(request.POST, instance=lending)
+        if form.is_valid():
+            form.save()
+            return redirect('lending_list')
+        else:
+            print(form.errors)
+            messages.error(request, "Error al agregar el préstamo. Verifica los campos.")
+            
+    else:
+        form = LendingForm(instance=lending)
+    return render(request, 'library/lending.html', {'form': form, 'lending': lending,'books':books, 'clients':clients})
+
+def lending_delete(request, pk):
+    lending = get_object_or_404(Lending, pk=pk)
+    lending.delete()
+    return redirect('lending_list')

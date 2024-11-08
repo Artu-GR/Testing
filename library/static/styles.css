@@ -1,6 +1,7 @@
 *{
     font-family: 'Roboto';
 }
+
 .forms{
     margin-left:20%;
     margin-right: 20%;
@@ -42,8 +43,13 @@ ion-content{
     margin-bottom: 2%;
     
 }
+
 ion-input{
     width:500px !important;
+}
+ion-select{
+    width: 500px !important;
+
 }
 ion-textarea{
     width: 500px !important;

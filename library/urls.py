@@ -13,5 +13,9 @@ urlpatterns=[
     path("<int:book_id>/book/", views.book, name="vote"),
     path('client_delete/<int:pk>/', views.client_delete, name='client_delete'),
     path('lending/',views.lending, name='lending'),
+    path('lending_list/',views.lending_list,name='lending_list'),
+    path('lending_edit/<int:pk>/', views.lending_edit, name='lending_edit'),
+    path('lending_delete/<int:pk>/', views.lending_delete, name='lending_delete'),
+
 
 ]

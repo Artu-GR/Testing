@@ -35,7 +35,9 @@
                    
                         <strong>Autor:</strong> {{ book.autor }}<br>
                         <strong>Género:</strong> {{ book.genre }}<br>
-                        <strong>Descripción:</strong> {{ book.description }}<br>
+                        <strong>Fecha: </strong> {{book.pub_date}} <br>
+                        <strong>Descripción:</strong> {{ book.description|truncatechars:500}}<br>
+                        
                         <strong>Total:</strong> {{ book.availability }}<br><br>
                         <ion-row>
                             <ion-button size="default" href="{% url 'book_edit' book.pk %}">Editar</ion-button>

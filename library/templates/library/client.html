@@ -35,6 +35,20 @@
                     
     
                 </ion-grid>
+                {% if messages %}
+                {% for message in messages %}
+                    <div id="message" data-message="{{ message }}" data-tags="{{ message.tags }}"></div>
+                {% endfor %}
+            {% endif %}
         </form>
     </ion-content>
+    <script>
+        // Seleccionar el mensaje si está presente
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            const message = messageElement.getAttribute('data-message');
+            const tags = messageElement.getAttribute('data-tags');
+            alert(message); // Muestra el mensaje como alerta
+        }
+    </script>
 </body>

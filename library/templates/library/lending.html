@@ -3,13 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Préstamo de Libros</title>
+     
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/styles.css' %}">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
 </head>
 <body>
-    <h1>Trámite de Préstamos</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <ion-content>
+  
+        <form method="post">
+            {% csrf_token %}
+            <ion-grid class="forms">
+                <h1>Trámite de Préstamos</h1>
+                <ion-row>
+                    <ion-select fill="outline"  label="Libros" name="book" id="book" placeholder="Seleccione un libro" value="{{lending.book.id}}">
+                        {% for book in books %}
+                            <ion-select-option value="{{book.id}}">{{book.title}}</ion-select-option>
+                        {% endfor %}
+                    </ion-select>
+                </ion-row>
+                <ion-row>
+                    <ion-select  fill="outline"  label="Clientes" name="client" id="client" placeholder="Seleccione un cliente" value="{{lending.client.id}}">
+                        {% for client in clients %}
+                            <ion-select-option value="{{client.id}}">{{client.name}} {{client.last_name}}</ion-select-option>
+                        {% endfor %}
+                    </ion-select>
+                </ion-row>
+                <ion-row>
+                    <ion-input label="Fecha de préstamo:" fill="outline"  name="lending_date" id="lending_date" placeholder="YYYY-MM-DD" value="{{lending.lending_date|date:'Y-m-d'}}"></ion-input>
+                </ion-row>
+
+                <ion-row>
+                    <ion-input label="Fecha de entrega:"  fill="outline"  name="return_date" id="return_date" placeholder="YYYY-MM-DD" value="{{lending.return_date|date:'Y-m-d'}}"></ion-input>
+                </ion-row>
+                <ion-row>
+                    <ion-select  fill="outline"  label="Estatus" name="status" id="status" placeholder="Seleccione un estatus" value="{{lending.status}}">
+                            <ion-select-option value="1">Fuera</ion-select-option>
+                            <ion-select-option value="2">Devuelto</ion-select-option>
+                            <ion-select-option value="3">Retrasado</ion-select-option>
+                            <ion-select-option value="4">Cancelado</ion-select-option>
+                    </ion-select>
+                </ion-row>
+                <ion-button type="submit">Guardar</ion-button>
+            </ion-grid> 
+            {% if messages %}
+            {% for message in messages %}
+                <div id="message" data-message="{{ message }}" data-tags="{{ message.tags }}"></div>
+            {% endfor %}
+        {% endif %}
+        </form>
+    </ion-content>
+
+    <script>
+        // Seleccionar el mensaje si está presente
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            const message = messageElement.getAttribute('data-message');
+            const tags = messageElement.getAttribute('data-tags');
+            alert(message); // Muestra el mensaje como alerta
+        }
+    </script>
 </body>
 </html>

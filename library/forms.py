@@ -14,7 +14,7 @@ class ClientForm(forms.ModelForm):
 class LendingForm(forms.ModelForm):
     class Meta:
         model = Lending
-        fields = ['book', 'client', 'return_date', 'status']
+        fields = ['book', 'client','lending_date', 'return_date', 'status']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
