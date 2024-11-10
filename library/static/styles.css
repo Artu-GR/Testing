@@ -10,7 +10,11 @@
     margin-top: 2%;
     border-radius: 1rem;
     margin-bottom: 2%;
+    
 
+}
+.button{
+    --background: #5174b4;
 }
 .book-img{
     margin-top: 5%;
@@ -21,8 +25,8 @@
 
 }
 ion-content{
-    --padding-start: 4%;
-    --padding-end:4%;
+    padding: 4%;
+    --overflow: auto;
 
 }
 .book-card{

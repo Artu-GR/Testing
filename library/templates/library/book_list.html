@@ -54,7 +54,7 @@
                             
                             <strong>Total:</strong> {{ book.availability }}<br><br>
                             <ion-row>
-                                <ion-button href="{% url 'book_edit' book.pk %}">Editar</ion-button>
+                                <ion-button class="button" href="{% url 'book_edit' book.pk %}">Editar</ion-button>
                                 <ion-button color="danger" type="submit" href="{% url 'book_delete' book.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
 
                             </ion-row>

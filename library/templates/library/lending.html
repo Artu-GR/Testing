@@ -44,13 +44,13 @@
                 </ion-row>
                 <ion-row>
                     <ion-select  fill="outline"  label="Estatus" name="status" id="status" placeholder="Seleccione un estatus" value="{{lending.status}}">
-                            <ion-select-option value="1">Fuera</ion-select-option>
-                            <ion-select-option value="2">Devuelto</ion-select-option>
-                            <ion-select-option value="3">Retrasado</ion-select-option>
-                            <ion-select-option value="4">Cancelado</ion-select-option>
+                            <ion-select-option value="Fuera">Fuera</ion-select-option>
+                            <ion-select-option value="Devuelto">Devuelto</ion-select-option>
+                            <ion-select-option value="Retrasado">Retrasado</ion-select-option>
+                            <ion-select-option value="Cancelado">Cancelado</ion-select-option>
                     </ion-select>
                 </ion-row>
-                <ion-button type="submit">Guardar</ion-button>
+                <ion-button class="button" type="submit">Guardar</ion-button>
             </ion-grid> 
             {% if messages %}
             {% for message in messages %}

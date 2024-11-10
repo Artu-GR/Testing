@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-
 from .models import Book, Client, Lending
 from .forms import BookForm, ClientForm, LendingForm
 from django.contrib import messages
 
-def index(request):
-    return HttpResponse("Welcome")
 
 # Agregar un libro
 def book(request):
@@ -14,7 +11,6 @@ def book(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Libro agregado correctamente.")
             return redirect('book_list') #regresa a la pagina princial
         else:
             messages.error(request, "Error al agregar el libro. Verifica los campos.")
@@ -54,7 +50,6 @@ def client(request):
         form = ClientForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Cliente agregado correctamente.")
             return redirect('client_list') #regresa a la pagina princial
         else:
             messages.error(request, "Error al agregar el cliente. Verifica los campos.")
@@ -96,7 +91,6 @@ def lending(request):
         form = LendingForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Préstamo agregado correctamente.")
             return redirect('lending_list') #regresa a la pagina princial
         else:
             messages.error(request, "Error al agregar el préstamo. Verifica los campos.")

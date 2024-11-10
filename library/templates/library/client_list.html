@@ -40,7 +40,7 @@
                         <strong>Apellido:</strong> {{ client.last_name }}<br>
                         <strong>Correo:</strong> {{ client.email }}<br><br>
                         <ion-row>
-                            <ion-button href="{% url 'client_edit' client.pk %}">Editar</ion-button>
+                            <ion-button class="button" href="{% url 'client_edit' client.pk %}">Editar</ion-button>
                             <ion-button color="danger" type="submit" href="{% url 'client_delete' client.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
                         </ion-row>
                     

@@ -48,10 +48,10 @@
                             <strong>Libro:</strong> {{ lending.book.title }}<br>
                             <strong>Cliente:</strong> {{ lending.client.name }} {{ lending.client.last_name }}<br>
                             <strong>Fecha de préstamo:</strong> {{ lending.lending_date|date:'Y-m-d' }}<br>
-                            <strong>Fecha de entrega:</strong> {{ lending.return_date|date:'Y-m-d' }}<br><br>
-        
+                            <strong>Fecha de entrega:</strong> {{ lending.return_date|date:'Y-m-d' }}<br>
+                            <strong>Estatus:</strong> {{lending.status}}<br><br>
                             <ion-row>
-                                <ion-button href="{% url 'lending_edit' lending.pk %}">Editar</ion-button>
+                                <ion-button class="button" href="{% url 'lending_edit' lending.pk %}">Editar</ion-button>
                                 <ion-button color="danger" type="submit" href="{% url 'lending_delete' lending.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
                             </ion-row>
                         </div>
