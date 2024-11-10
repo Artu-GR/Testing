@@ -12,7 +12,7 @@
     margin-bottom: 2%;
 
 }
-img{
+.book-img{
     margin-top: 5%;
     width: 300px;
     height:400px;
@@ -38,6 +38,7 @@ ion-content{
   }
 .col{
     height:100%;
+    margin-bottom: 5%;
 }
 .forms ion-row{
     margin-bottom: 2%;
@@ -54,4 +55,40 @@ ion-select{
 ion-textarea{
     width: 500px !important;
     height: 80px !important;
+}
+
+.client-list{
+    margin-bottom: 5%;
+}
+.menu-fb{
+    color: #7ba5f1;
+}
+.menu-sb{
+    color: #7c7c7c;
+}
+.menu ion-button:hover {
+    background-color: #7ba5f1; 
+    color: white; 
+}
+.client-card{
+    border: 2px solid #7ba5f1;
+    margin-bottom:2%;
+}
+.lending-card{
+    border: 2px solid #7ba5f1;
+    margin-bottom:2%;
+    padding: 1%;
+}
+.lending-content{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.lending-info{
+    width: 50%;
+    padding-left: 3%;
+}
+.lending-img{
+    width: 50%;
 }

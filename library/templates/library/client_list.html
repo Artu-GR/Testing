@@ -10,32 +10,45 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 </head>
 
+<!--Menu-->
+<ion-header>
+    <ion-toolbar class="menu">
+        <ion-title>Clientes Registrados</ion-title>
+        <ion-buttons slot="end">
+            <ion-button href="{% url 'client' %}" fill="outline" class="menu-fb">
+                Agregar Cliente
+                <ion-icon slot="end" name="person-add-outline"></ion-icon>
+            </ion-button>
+            <ion-button href="{% url 'book_list' %}" fill="clear" class="menu-sb">
+                Libros Registrados
+            </ion-button>
+            <ion-button href="{% url 'lending_list' %}" fill="clear" class="menu-sb">
+                Lista de Prestamos
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 
-<ion-content>
-<h1>Clientes Registrados</h1>
-<ion-row>
-    <ion-button href="{% url 'client' %}">Agregar Nuevo Cliente/Usuario</ion-button>
-</ion-row>
-<ion-grid>
-    <ion-row>
-       
-        <ion-col>
-            {% for client in clients %}
-            <ion-card>
-                <ion-card-content>
-                    <strong>Nombre:</strong> {{ client.name }}<br>
-                    <strong>Apellido:</strong> {{ client.last_name }}<br>
-                    <strong>Correo:</strong> {{ client.email }}<br><br>
-                    <ion-row>
-                        <ion-button href="{% url 'client_edit' client.pk %}">Editar</ion-button>
-                        <ion-button color="danger" type="submit" href="{% url 'client_delete' client.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
-                    </ion-row>
-                   
-                </ion-card-content>
-            </ion-card>
-            {% endfor %} 
-        </ion-col>
-    
-    </ion-row>
-</ion-grid>
+<ion-content class="client-list">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                {% for client in clients %}
+                <ion-card class="client-card">
+                    <ion-card-content>
+                        <strong>Nombre:</strong> {{ client.name }}<br>
+                        <strong>Apellido:</strong> {{ client.last_name }}<br>
+                        <strong>Correo:</strong> {{ client.email }}<br><br>
+                        <ion-row>
+                            <ion-button href="{% url 'client_edit' client.pk %}">Editar</ion-button>
+                            <ion-button color="danger" type="submit" href="{% url 'client_delete' client.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
+                        </ion-row>
+                    
+                    </ion-card-content>
+                </ion-card>
+                {% endfor %} 
+            </ion-col>
+        
+        </ion-row>
+    </ion-grid>
 </ion-content>

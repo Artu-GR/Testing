@@ -10,31 +10,55 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 </head>
 
+<!--Menu-->
+<ion-header>
+    <ion-toolbar class="menu">
+        <ion-title>Préstamos Registrados</ion-title>
+        <ion-buttons slot="end">
+            <ion-button href="{% url 'lending' %}" fill="outline" class="menu-fb">
+                Agregar Prestamo
+                <ion-icon slot="end" name="reader-outline"></ion-icon>
+            </ion-button>
+            <ion-button href="{% url 'book_list' %}" fill="clear" class="menu-sb">
+                Libros Registrados
+            </ion-button>
+            <ion-button href="{% url 'client_list' %}" fill="clear" class="menu-sb">
+                Lista de Clientes
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content>
-<h1>Préstamos Registrados</h1>
-<ion-row>
-    <ion-button href="{% url 'lending' %}">Agregar Nuevo Préstamo</ion-button>
-</ion-row>
 <ion-grid>
     <ion-row>
        
         <ion-col>
             {% for lending in lendings %}
-            <ion-card>
-                <ion-card-content>
-                    <strong>Libro:</strong> {{ lending.book.title }}<br>
-                    <strong>Cliente:</strong> {{ lending.client.name }} {{lending.client.last_name}}<br>
-                    <strong>Fecha de préstamo:</strong> {{ lending.lending_date|date:'Y-m-d' }}<br>
-                    <strong>Fecha de entrega:</strong> {{ lending.return_date|date:'Y-m-d' }}<br>
+            <ion-card class="lending-card">
+                <ion-card-content class="lending-content">
+                    
+                        <div class="lending-image">
+                            {% if lending.book.image %}
+                            <img src="{{ lending.book.image.url }}" style="width: auto; height: 100%;">
+                            {% endif %}
+                        </div>
 
-                    <ion-row>
-                        <ion-button href="{% url 'lending_edit' lending.pk %}">Editar</ion-button>
-                        <ion-button color="danger" type="submit" href="{% url 'lending_delete' lending.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
-                    </ion-row>
-                   
+                        <div class="lending-info">
+                            <strong>Libro:</strong> {{ lending.book.title }}<br>
+                            <strong>Cliente:</strong> {{ lending.client.name }} {{ lending.client.last_name }}<br>
+                            <strong>Fecha de préstamo:</strong> {{ lending.lending_date|date:'Y-m-d' }}<br>
+                            <strong>Fecha de entrega:</strong> {{ lending.return_date|date:'Y-m-d' }}<br><br>
+        
+                            <ion-row>
+                                <ion-button href="{% url 'lending_edit' lending.pk %}">Editar</ion-button>
+                                <ion-button color="danger" type="submit" href="{% url 'lending_delete' lending.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
+                            </ion-row>
+                        </div>
+                    
                 </ion-card-content>
             </ion-card>
+        
             {% endfor %} 
         </ion-col>
     

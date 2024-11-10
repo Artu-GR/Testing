@@ -4,54 +4,67 @@
     
     {% load static %}
     <link rel="stylesheet" href="{% static '/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 </head>
 
+
 <body>
-<ion-content>
-<h1>Libros Registrados</h1>
-<ion-row>
-<ion-button href="{% url 'book' %}">Agregar Nuevo Libro</ion-button>
-<ion-button href="{% url 'client_list' %}">Lista Clientes</ion-button>
-</ion-row>
 
-  
-    <ion-grid>
-        <ion-row>
-            {% for book in books %}
-            <ion-col size="6" class="col">
-                <ion-card class="book-card">
-                    <ion-card-content>
-                    <ion-card-title><strong>{{ book.title }}</strong><br></ion-card-title>
-                    <ion-row>
-                    {% if book.image %}
-                    <img src="{{book.image.url}}">
-                    {% endif %}
-                    </ion-row>
-                
-                   
-                        <strong>Autor:</strong> {{ book.autor }}<br>
-                        <strong>Género:</strong> {{ book.genre }}<br>
-                        <strong>Fecha: </strong> {{book.pub_date}} <br>
-                        <strong>Descripción:</strong> {{ book.description|truncatechars:500}}<br>
-                        
-                        <strong>Total:</strong> {{ book.availability }}<br><br>
+<!--Menu-->
+<ion-header>
+    <ion-toolbar class="menu">
+        <ion-title>Libros Registrados</ion-title>
+        <ion-buttons slot="end">
+            <ion-button href="{% url 'book' %}" fill="outline" class="menu-fb">
+                Agregar Libro 
+                <ion-icon slot="end" name="book-outline"></ion-icon>
+            </ion-button>
+            <ion-button href="{% url 'client_list' %}" fill="clear" class="menu-sb">
+                Lista de Clientes
+            </ion-button>
+            <ion-button href="{% url 'lending_list' %}" fill="clear" class="menu-sb">
+                Lista de Prestamos
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<!--Contenido de pagina-->
+    <ion-content>
+        <ion-grid>
+            <ion-row>
+                {% for book in books %}
+                <ion-col size="6" class="col">
+                    <ion-card class="book-card">
+                        <ion-card-content>
+                        <ion-card-title><strong>{{ book.title }}</strong><br></ion-card-title>
                         <ion-row>
-                            <ion-button size="default" href="{% url 'book_edit' book.pk %}">Editar</ion-button>
-                            <ion-button color="danger" type="submit" href="{% url 'book_delete' book.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
-
+                        {% if book.image %}
+                        <img src="{{book.image.url}}" class="book-img">
+                        {% endif %}
                         </ion-row>
-                    </ion-card-content>
-                </ion-card>
-             
-            </ion-col>
-            {% endfor %}
-    </ion-row>
-    </ion-grid>
+                            <strong>Autor:</strong> {{ book.autor }}<br>
+                            <strong>Género:</strong> {{ book.genre }}<br>
+                            <strong>Fecha: </strong> {{book.pub_date}} <br>
+                            <strong>Descripción:</strong> {{ book.description|truncatechars:500}}<br>
+                            
+                            <strong>Total:</strong> {{ book.availability }}<br><br>
+                            <ion-row>
+                                <ion-button href="{% url 'book_edit' book.pk %}">Editar</ion-button>
+                                <ion-button color="danger" type="submit" href="{% url 'book_delete' book.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</ion-button>
 
-    
-</ion-content>
+                            </ion-row>
+                        </ion-card-content>
+                    </ion-card>
+                
+                </ion-col>
+                {% endfor %}
+            </ion-row>
+        </ion-grid>
+    </ion-content>
 </body>
+
