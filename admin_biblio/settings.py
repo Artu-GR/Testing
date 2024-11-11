@@ -80,8 +80,8 @@ DATABASES = {
         'NAME': 'Library',
         'USER': 'root',
         'PASSWORD':'root',
-        'HOST':'localhost',
-        'PORT':3306
+        'HOST':'libraryP',
+        'PORT':'3306'
     }
 }
 

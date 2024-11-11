@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  django:
+    build: .
+    container_name: djangoLibrary
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=libraryP  # Nombre del contenedor de MySQL (o la IP del contenedor)
+      - DB_NAME=Library
+      - DB_USER=root
+      - DB_PASSWORD=root
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: libraryP
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # Contraseña de root
+      MYSQL_DATABASE: Library
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persistencia de datos
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
