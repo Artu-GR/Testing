@@ -28,6 +28,8 @@ services:
       MYSQL_PASSWORD: root
     volumes:
       - mysql-data:/var/lib/mysql  # Persistencia de datos
+    ports:
+      - '3306:3306'
     networks:
       - app-network
 
