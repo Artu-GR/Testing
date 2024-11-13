@@ -8,6 +8,7 @@ RUN dnf -y install python3 python3-pip \
     && dnf -y install python3-devel \
     && dnf clean all
   
+RUN dnf install -y nc
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install mysqlclient
 
